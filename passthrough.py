@@ -77,24 +77,27 @@ orig_map = {"KEY_LEFT_CTRL":128,
             "KEY_F12":205}
 
 if __name__ == "__main__":
-    from docopt import docopt
-    args = docopt(__doc__)
-    import sys, pygame
-    from pprint import pprint
+    import pygame
     from struct import pack
     import serial
-    pygame.init()
+    import sys
+
+    if len(sys.argv) > 1:
+        port = sys.argv[1]
+    else:
+        port = '/dev/ttyUSB0'
+
+    pygame.display.init()
     size = width, height = 320, 240
     speed = [2, 2]
     black = 0, 0, 0
 
-    ser = serial.Serial('/dev/ttyUSB0', 9600)
+    ser = serial.Serial(port, 76800)
 
     screen = pygame.display.set_mode(size)
     while True:
         for event in pygame.event.get():
-
-            if event.type in (pygame.KEYUP ,pygame.KEYDOWN):
+            if event.type in (pygame.KEYUP, pygame.KEYDOWN):
                 if event.type == pygame.KEYUP:
                     press=False
                 else:
@@ -102,8 +105,7 @@ if __name__ == "__main__":
 
                 if event.key in py_map:
                     key=orig_map[py_map[event.key]]
-                    print("{} mapped to {} ({})".format(event.key,
-                        py_map[event.key],key))
+                    print("{} mapped to {} ({})".format(event.key, py_map[event.key], key))
                 else:
                     key=event.key
                 print("{} {}".format("pressed" if press else "released",key))

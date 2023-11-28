@@ -1,4 +1,7 @@
 /*
+  ---> add keyboard lib
+  ---> specific boards:  Arduino Leonardo, Micro, Pro Micro, MKR Boards, Nano 33 IoT
+
   Passthrough keypresses from serial to Keyboard 
  
  Not all pins on the Leonardo support change interrupts,
@@ -15,6 +18,7 @@
  
  */
 #include <SoftwareSerial.h>
+#include <Keyboard.h>
 
 SoftwareSerial mySerial(9, 10); // RX, TX
 
@@ -22,15 +26,14 @@ SoftwareSerial mySerial(9, 10); // RX, TX
 bool press=true;
 
 void setup(){
-  mySerial.begin(9600);
+  mySerial.begin(76800);
   Keyboard.begin();
   //Serial.begin(9600);
 }
 
 void loop(){
   
-  if (mySerial.available())
-  {
+  if (mySerial.available()){
     char k = mySerial.read();
     //Serial.write(k);
     //Serial.println(" received");
