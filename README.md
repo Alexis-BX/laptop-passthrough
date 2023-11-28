@@ -51,7 +51,7 @@ Video passthrough
 
 Note: `dshow-vdev` may need to be adjusted, check the `Video device name` dropdown for exact name.
 
-To open this automatically you can create a VLC shortcup with target: `"C:\Program Files\VideoLAN\VLC\vlc.exe" dshow:// :dshow-vdev="USB Video" :dshow-adev= :dshow-aspect-ratio="16:9" :dshow-audio-samplerate=48000 :dshow-audio-channels=2 :live-caching=0 :dshow-fps=60 :dshow-size=1920x1080`
+To open this automatically you can create a VLC shortcup with target: `"C:\Program Files\VideoLAN\VLC\vlc.exe" dshow:// :dshow-vdev="USB Video" :dshow-adev= :dshow-aspect-ratio="16:9" :dshow-audio-samplerate=48000 :dshow-audio-channels=2 :live-caching=0 :dshow-fps=60 :dshow-size=1920x1080` (example in Capture.lnk)
 
 
 References
